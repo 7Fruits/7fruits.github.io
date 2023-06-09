@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Frist Blog Post
+title: First Blog Post - Test
 published: true
 ---
 
