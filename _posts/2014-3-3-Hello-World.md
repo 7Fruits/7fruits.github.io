@@ -4,7 +4,7 @@ title: First Blog Post - Test
 published: true
 ---
 
-# This is my first blog with Jekyll
+# This is my first blog with Jekyll.
 ## Have fun!
 
 > He has made everything beautiful in its time. 
