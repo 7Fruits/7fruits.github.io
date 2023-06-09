@@ -2,14 +2,15 @@
 layout: page
 title: About
 permalink: /about/
+published: true
 ---
 
-Some information about you!
+Some information about 7Fruits!
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Passion in data analytics and data engineering. 
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[dataninja.7fruits@gmail.com](mailto:dataninja.7fruits@gmail.com)
