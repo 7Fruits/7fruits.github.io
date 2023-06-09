@@ -5,7 +5,7 @@ permalink: /about/
 published: true
 ---
 
-Some information about 7Fruits!
+Some information about Data Ninja!
 
 ### More Information
 
