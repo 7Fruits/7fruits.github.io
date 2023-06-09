@@ -7,5 +7,8 @@ published: true
 # This is my first blog with Jekyll
 ## Have fun!
 
-> And we know that all things work together for good to them that love God, to them who are the called  according to his purpose.  
-Romans 8:28
+> He has made everything beautiful in its time. 
+Ecclesiastes 3:11
+
+
+
