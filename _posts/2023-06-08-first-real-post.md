@@ -2,7 +2,7 @@
 published: true
 ---
 
-## A New Post
+## Meow
 
-Ok, let me start my work!
+Let's start!
 ![mycat](/images/mycat.jpg)
