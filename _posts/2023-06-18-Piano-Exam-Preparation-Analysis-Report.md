@@ -1,8 +1,6 @@
 ---
 published: true
 ---
-## Piano Exam Preparation Analysis Report
-
 My son is going to have the RCM level 7 exam soon. He was supposed to prepare his techniques well if he followed the instruction from his piano teacher. However, the result seems not as expected. Let me help him to practice efficiently through the data analytics result.
 
 #### Target
