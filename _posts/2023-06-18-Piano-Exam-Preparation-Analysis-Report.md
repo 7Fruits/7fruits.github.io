@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ## Piano Exam Preparation Analysis Report
 
