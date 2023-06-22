@@ -24,7 +24,7 @@ By running the T-SQL script in SQL server as below, I got the results that 2 and
 However in the excel, DENSE_RANK is not supported directly. But it could be solved through the formula.
 Let me use the data set from the post [Piano Exam Preparation Analysis Report](https://7fruits.github.io/Piano-Exam-Preparation-Analysis-Report/).
 
-In the formula, there are 2 functions [Frequency](https://support.microsoft.com/en-us/office/frequency-function-44e3be2b-eca0-42cd-a3f7-fd9ea898fdb9) and [Sum](https://support.microsoft.com/en-us/office/sum-function-043e1c7d-7726-4e80-8f32-07b23e057f89) to implement ranking without skipping the number. In the chart below, there is a gap in the yellow rectangles, but there is no gap in the blue rectangles.  
+In the formula, there are 2 functions [Frequency](https://support.microsoft.com/en-us/office/frequency-function-44e3be2b-eca0-42cd-a3f7-fd9ea898fdb9) and [Sum](https://support.microsoft.com/en-us/office/sum-function-043e1c7d-7726-4e80-8f32-07b23e057f89) to implement ranking without skipping the number. In the chart below, there is a gap in the yellow rectangles because of using rank() function, but there is no gap in the blue rectangles because of using the formula. 
 
 ![]({{site.baseurl}}/images/DenseRank_Excel.png)
 
@@ -50,9 +50,9 @@ AG$2:AG$70 < AG11 will find the value from the array that smaller than the value
 
 ![]({{site.baseurl}}/images/f-s1.png)
 
-Step 2 is the same as step 1 and it returns the same result: values are smaller than 3.67.
+Step 2 is as same as step 1 and it returns the same result.
 
-Step 3 is to find the frequency of the values from step 2 in the array of step 1, and return the array. 
+Step 3 is to find the frequency of the values from step 2 in the array of step 1, and return the array.I put them in the table for using understanding. 
 
 | Avg Score (step2)| Frequecy (step3) | 
 | :---        |    :----:   | 
@@ -67,7 +67,7 @@ Step 3 is to find the frequency of the values from step 2 in the array of step 1
 
 ![]({{site.baseurl}}/images/f-s3.png)
 
-In step 4, it returns if the value of step 3 is greater than 0, if yes, return True , else False
+In step 4, it returns True or False, if the value of step 3 is greater than 0 or not.
 
 | Avg Score (step2)| Frequecy (step3) | > 0 (step4)     |
 | :---        |    :----:   |         : ---: |
