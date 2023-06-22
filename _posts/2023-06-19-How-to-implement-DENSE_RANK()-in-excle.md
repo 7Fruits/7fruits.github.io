@@ -23,9 +23,78 @@ By running the T-SQL script in SQL server as below, I got the results that 2 and
 
 However in the excel, DENSE_RANK is not supported directly. But it could be solved through the formula.
 Let me use the data set from the post [Piano Exam Preparation Analysis Report](https://7fruits.github.io/Piano-Exam-Preparation-Analysis-Report/).
-I'm going to use 2 functions to implement ranking without skipping the number
-[Frequency](https://support.microsoft.com/en-us/office/frequency-function-44e3be2b-eca0-42cd-a3f7-fd9ea898fdb9) and 
-[Sum](https://support.microsoft.com/en-us/office/sum-function-043e1c7d-7726-4e80-8f32-07b23e057f89).
+
+In the formula, there are 2 functions [Frequency](https://support.microsoft.com/en-us/office/frequency-function-44e3be2b-eca0-42cd-a3f7-fd9ea898fdb9) and [Sum](https://support.microsoft.com/en-us/office/sum-function-043e1c7d-7726-4e80-8f32-07b23e057f89) to implement ranking without skipping the number. In the chart below, there is a gap in the yellow rectangles, but there is no gap in the blue rectangles.  
+
+![]({{site.baseurl}}/images/DenseRank_Excel.png)
+
+I break the formula of the cell AI11 into 6 steps. 
+
+![]({{site.baseurl}}/images/Formula_DenseRank_No.png)
 
 
-    
+![]({{site.baseurl}}/images/Formula_Eval.png)
+
+When the cursor in the cell AI11, click the formulas tab on the ribbon, then click the "Evaluate Formula" button, it will appear as:
+
+![]({{site.baseurl}}/images/f0.png)
+
+I could check the return value of each step by clicking the evaluate button.
+
+![]({{site.baseurl}}/images/f1.png)
+
+In step 1, AG$2:AG$70 is the array that includes all the average scores in column AG. 
+AG$2:AG$70 < AG11 will find the value from the array that smaller than the value in cell AG11 which is 3.67 and will return true or false.
+
+(AG$2:AG$70< AG11)* AG$2:AG$70 returns the values are smaller than 3.67. If the value is greater than 3.67, it returns 0. See those values from the screenshot below:
+
+![]({{site.baseurl}}/images/f-s1.png)
+
+Step 2 is the same as step 1 and it returns the same result: values are smaller than 3.67.
+
+Step 3 is to find the frequency of the values from step 2 in the array of step 1, and return the array. 
+
+| Avg Score (step2)| Frequecy (step3) | 
+| :---        |    :----:   | 
+| 2.2      | 1       |
+| 2.75   | 1        | 
+| 2.8   | 1        | 
+| 3.1   | 1        |
+| 3.333..   | 1        | 
+| 3.6   | 4        | 
+| 0   | 60        | 
+|....|    |
+
+![]({{site.baseurl}}/images/f-s3.png)
+
+In step 4, it returns if the value of step 3 is greater than 0, if yes, return True , else False
+
+| Avg Score (step2)| Frequecy (step3) | > 0 (step4)     |
+| :---        |    :----:   |         : ---: |
+| 2.2      | 1       | True  |
+| 2.75   | 1        | True     |
+| 2.8   | 1        | True     |
+| 3.1   | 1        | True      |
+| 3.333..   | 1        | True      |
+| 3.6   | 4        | True     |
+| 0   | 60        | True    |
+|....|    |
+
+In step 5, use double minus to convert true and false into 1 and 0.
+
+| Avg Score (step2)| Frequecy (step3) | > 0 (step4)     |-- (step5)|
+| :---        |    :----:   |         : ---: |  : ---: |
+| 2.2      | 1       | True  |  1 |
+| 2.75   | 1        | True     |  1 |
+| 2.8   | 1        | True     |  1 |
+| 3.1   | 1        | True      |  1 |
+| 3.333..   | 1        | True      |  1|
+| 3.6   | 4        | True     |  1 |
+| 0   | 60        | True    |  1 |
+|....|    |
+
+In step 6, SUM() adds up all the 1 and 0 from step 5 and returns 7. So 3.67 ranks 7 among array AG$2:AG$70.
+
+![]({{site.baseurl}}/images/f-s6.png)
+
+Well, this formula is just as DENSE_RANK() from SQL to implement ranking without gap for ties in excel.
