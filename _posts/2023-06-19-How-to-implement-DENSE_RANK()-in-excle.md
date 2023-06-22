@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 RANK(), ROW_NUMBER() and DENSE_RANK() are three useful functions in SQL query for ranking purpose.
 
